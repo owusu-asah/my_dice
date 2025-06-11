@@ -79,11 +79,53 @@ h1 {
     border: 2px solid #ddd;
     border-radius: var(--border-radius);
     margin: 1rem 0;
+    -moz-appearance: textfield; /* Firefox */
+}
+
+/* Remove default spinner buttons for Chrome, Safari, Edge, Opera */
+#dice::-webkit-outer-spin-button,
+#dice::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Custom spinner buttons */
+#dice {
+    position: relative;
+}
+
+#dice::after {
+    content: "";
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid var(--text-color);
+    pointer-events: none;
+}
+
+#dice::before {
+    content: "";
+    position: absolute;
+    right: 10px;
+    bottom: 50%;
+    transform: translateY(50%);
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--text-color);
+    pointer-events: none;
 }
 
 #dice:focus {
     outline: none;
     border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
 }
 
 #diceImages {
