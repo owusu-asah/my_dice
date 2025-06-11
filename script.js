@@ -45,8 +45,22 @@ let rollHistory = [];
 
 // Input validation
 function validateDiceInput() {
-    const value = parseInt(diceInput.value);
-    if (isNaN(value) || value < DICE_MIN) {
+    let value = diceInput.value;
+    
+    // Allow empty input temporarily
+    if (value === '') {
+        return DICE_MIN;
+    }
+    
+    // Convert to number and validate
+    value = parseInt(value);
+    if (isNaN(value)) {
+        diceInput.value = DICE_MIN;
+        return DICE_MIN;
+    }
+    
+    // Ensure value is within bounds
+    if (value < DICE_MIN) {
         diceInput.value = DICE_MIN;
         return DICE_MIN;
     }
@@ -54,6 +68,7 @@ function validateDiceInput() {
         diceInput.value = DICE_MAX;
         return DICE_MAX;
     }
+    
     return value;
 }
 
@@ -181,7 +196,14 @@ function rollDice() {
 }
 
 // Event Listeners
-diceInput.addEventListener("input", validateDiceInput);
+diceInput.addEventListener("input", () => {
+    // Only validate when the input loses focus or when rolling
+    if (diceInput.value !== '') {
+        validateDiceInput();
+    }
+});
+
+diceInput.addEventListener("change", validateDiceInput);
 rollButton.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         rollDice();
