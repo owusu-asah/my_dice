@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A fun and interactive dice rolling application">
+    <meta name="theme-color" content="#4CAF50">
+    <title>Dice Roller</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!--
+    <input type="checkbox" id="subscribeBtn" >
+    <label for="subscribeBtn">Subscribe to our newsletter</label><br><br>
+
+    <input type="radio" id="Terms" name="agreement" >
+    <label for="Terms">I agree to the terms and conditions</label><br><br>
+
+    <input type="radio" id="Privacy" name="agreement" >
+    <label for="Privacy">I agree to the privacy policy</label><br><br>
+
+    <input type="radio" id="Marketing" name="agreement" >
+    <label for="Marketing">I agree to receive marketing communications</label><br><br>
+
+    <button id="submitBtn">Submit</button><br><br>
+
+    <p id="message"></p>
+    <p id="errorMessage" style="color: red;"></p>
+    -->
+
+    <main id="container">
+        <h1>Dice Roller <span class="dice-emoji">🎲</span></h1>
+        
+        <div class="controls">
+            <label for="dice">Number of dice:</label>
+            <input 
+                type="number" 
+                id="dice" 
+                name="dice" 
+                value="1" 
+                min="1" 
+                max="10" 
+                aria-label="Number of dice to roll"
+            >
+            <button 
+                id="rollBtn" 
+                onclick="rollDice()"
+                aria-label="Roll the dice"
+            >
+                Roll Dice
+            </button>
+        </div>
+
+        <div id="result" role="status" aria-live="polite"></div>
+        <div id="diceImages" aria-label="Dice roll results"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
