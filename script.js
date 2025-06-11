@@ -140,7 +140,7 @@ function rollDice() {
     for (let i = 0; i < numDice; i++) {
         const value = rollSingleDie();
         values.push(value);
-        images.push(`<img src="Dice/${value}.jpg" alt="Dice showing ${value}" loading="lazy">`);
+        images.push(`<img src="${value}.jpg" alt="Dice showing ${value}" loading="lazy">`);
     }
     
     // Calculate total
