@@ -70,62 +70,84 @@ h1 {
     box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
 }
 
+.number-input-container {
+    position: relative;
+    display: inline-block;
+    margin: 1rem 0;
+}
+
 #dice {
     font-size: 1.5rem;
     font-weight: bold;
     text-align: center;
     width: var(--dice-size);
     padding: 0.5rem;
+    padding-right: 2.5rem; /* Make room for spinner buttons */
     border: 2px solid #ddd;
     border-radius: var(--border-radius);
-    margin: 1rem 0;
     -moz-appearance: textfield; /* Firefox */
 }
 
-/* Remove default spinner buttons for Chrome, Safari, Edge, Opera */
+/* Remove default spinner buttons */
 #dice::-webkit-outer-spin-button,
 #dice::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
 
-/* Custom spinner buttons */
-#dice {
-    position: relative;
-}
-
-#dice::after {
-    content: "";
+.spinner-controls {
     position: absolute;
-    right: 10px;
+    right: 2px;
     top: 50%;
     transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-bottom: 5px solid var(--text-color);
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 4px);
     pointer-events: none;
 }
 
-#dice::before {
-    content: "";
-    position: absolute;
-    right: 10px;
-    bottom: 50%;
-    transform: translateY(50%);
-    width: 0;
-    height: 0;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-    border-top: 5px solid var(--text-color);
-    pointer-events: none;
+.spinner-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 1.5rem;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: var(--text-color);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: color 0.2s ease;
+}
+
+.spinner-btn:hover {
+    color: var(--primary-color);
+}
+
+.spinner-btn:active {
+    color: var(--primary-active);
+}
+
+.spinner-up {
+    border-bottom: 1px solid #ddd;
+}
+
+.spinner-down {
+    border-top: 1px solid #ddd;
 }
 
 #dice:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+/* Remove the previous ::before and ::after pseudo-elements for the input */
+#dice::before,
+#dice::after {
+    display: none;
 }
 
 #diceImages {

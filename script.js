@@ -39,6 +39,8 @@ const diceInput = document.getElementById("dice");
 const rollButton = document.getElementById("rollBtn");
 const resultDisplay = document.getElementById("result");
 const diceImagesContainer = document.getElementById("diceImages");
+const spinnerUp = document.querySelector(".spinner-up");
+const spinnerDown = document.querySelector(".spinner-down");
 
 // Roll history
 let rollHistory = [];
@@ -204,6 +206,24 @@ diceInput.addEventListener("input", () => {
 });
 
 diceInput.addEventListener("change", validateDiceInput);
+
+// Spinner button handlers
+spinnerUp.addEventListener("click", () => {
+    const currentValue = parseInt(diceInput.value) || DICE_MIN;
+    if (currentValue < DICE_MAX) {
+        diceInput.value = currentValue + 1;
+        validateDiceInput();
+    }
+});
+
+spinnerDown.addEventListener("click", () => {
+    const currentValue = parseInt(diceInput.value) || DICE_MIN;
+    if (currentValue > DICE_MIN) {
+        diceInput.value = currentValue - 1;
+        validateDiceInput();
+    }
+});
+
 rollButton.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         rollDice();
